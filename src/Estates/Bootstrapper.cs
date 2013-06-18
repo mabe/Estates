@@ -19,6 +19,7 @@ namespace Estates
         protected override void ConfigureConventions(Nancy.Conventions.NancyConventions nancyConventions)
         {
             nancyConventions.StaticContentsConventions.Add(StaticContentConventionBuilder.AddDirectory("scripts", @"scripts"));
+            nancyConventions.StaticContentsConventions.Add(StaticContentConventionBuilder.AddDirectory("partials", @"partials"));
         }
 
         protected override void ApplicationStartup(StructureMap.IContainer container, Nancy.Bootstrapper.IPipelines pipelines)

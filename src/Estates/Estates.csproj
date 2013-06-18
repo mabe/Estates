@@ -116,6 +116,7 @@
     <Content Include="content\font\fontawesome-webfont.svg" />
     <Content Include="content\images\glyphicons-halflings-white.png" />
     <Content Include="content\images\glyphicons-halflings.png" />
+    <Content Include="partials\estates.html" />
     <Content Include="scripts\angular-cookies.js" />
     <Content Include="scripts\angular-cookies.min.js" />
     <Content Include="scripts\angular-google-maps.js" />

@@ -1,5 +1,9 @@
 ﻿(function () {
-    angular.module("estates-app", ["google-maps"]);
+    angular.module("estates-app", ["google-maps"]).config(['$routeProvider', function ($routeProvider) {
+        $routeProvider
+            .when('/estates', { templateUrl: 'partials/estates.html', controller: EstatesCtrl })
+            .otherwise({ redirectTo: '/estates' });
+    }]);
 }());
 
 function EstatesCtrl($scope, $http) {
