@@ -1,0 +1,26 @@
+﻿@{
+    Layout = "_layout.cshtml";
+}
+
+<section class="fixed-row estates" ng-controller="EstatesCtrl">
+    
+            <div class="google-map" 
+		        center="centerProperty"
+                markers="markersProperty"
+                zoom="zoomProperty" 
+		        mark-click="false"
+		        draggable="true"
+		        fit="false"
+		        style="height: 100%; min-height: 100%; width: 100%"></div>    
+    
+    <div style="position: absolute; top: 0px; right: 10px; background-color:#fff;">
+            <ul class="unstyled ul-striped">
+                <li ng-repeat="estate in estates">
+                    <address>
+                    <strong>{{estate.Address}}</strong><br />
+                    {{estate.Zip}} {{estate.City}}
+                    </address>
+                </li>
+            </ul>
+        </div>
+</section>
