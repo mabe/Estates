@@ -1,0 +1,36 @@
+﻿<!--action="/estates" method="post"-->
+<form class="form-horizontal" ng-submit="createEstate()">
+
+    <div class="modal-header">
+        <h3>Estate</h3>
+    </div>
+    <div class="modal-body">
+        <div class="control-group">
+            <label class="control-label">Address</label>
+            <div class="controls">
+                <input type="text" class="span4" name="Address" ng-model="estate.Address" />
+            </div>
+        </div>
+
+        <div class="control-group">
+            <label class="control-label">Zip / City</label>
+            <div class="controls controls-row">
+                <input type="text" class="span1" name="Zip" ng-model="estate.Zip" />
+                <input type="text" class="span3" name="City" ng-model="estate.City" />
+            </div>
+        </div>
+
+        <div class="control-group">
+            <label class="control-label">Latitud / Longitude</label>
+            <div class="controls controls-row">
+                <input type="text" class="span2" name="Lat" ng-model="estate.Lat" />
+                <input type="text" class="span2" name="Long" ng-model="estate.Long" />
+                <button class="btn" style="margin-left: 30px;"><i class="icon-cloud-download"></i></button>
+            </div>
+        </div>
+    </div>
+    <div class="modal-footer">
+        <button type="submit" class="btn btn-primary">Save</button></div>
+
+</form>
+

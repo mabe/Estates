@@ -10,11 +10,18 @@ namespace Estates.modules
 {
     public class InitModule : NancyModule
     {
-        public InitModule(IDocumentSession session) : base("init")
+        public InitModule(IDocumentSession session) 
         {
-            Get["/"] = _ =>
+            Get["/init"] = _ =>
             {
                 session.Store(new Estate() { Address = "Ringvägen 101", City = "Varberg", Zip = "43243", Lat = 57.10130m, Long = 12.25567m });
+
+                return "Ok";
+            };
+
+            Get["/clear"] = _ =>
+            {
+                session.Query<Estate>().ToList().ForEach(session.Delete);
 
                 return "Ok";
             };

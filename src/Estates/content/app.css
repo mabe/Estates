@@ -13,22 +13,36 @@ header.fixed-row { height: 75px; top: 0; }
 section.fixed-row { top: 75px; bottom: 50px; }
 footer.fixed-row { height: 50px; bottom: 0; }
 
-
-
-.estates .row-fluid > .span2 {
-    border-left: 1px solid #B9B9B9;
+.estates ul {
+    width: 250px;
+    
 }
 
-    .estates ul {
-        width: 250px;
-        padding: 0px 10px 10px 10px;
+    .estates ul li {
+        padding: 10px;
+        cursor: pointer;
     }
-
-        .estates ul li {
-            padding: 10px;
-            cursor: pointer;
-        }
 
 .ul-striped > li:nth-child(odd) {
     background-color: #f9f9f9;
+}
+
+.accordion {
+    margin-bottom: 0px;
+}
+
+    .accordion form {
+        margin: 0px;
+    }
+
+.accordion-inner {
+    padding: 0px;
+}
+
+    .accordion-inner ul {
+        margin: 0px;
+    }
+
+.modal {
+    width: 700px;
 }

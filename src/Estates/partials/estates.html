@@ -1,22 +1,40 @@
-﻿<section class="fixed-row estates" ng-controller="EstatesCtrl">
-    
-            <div class="google-map" 
-		        center="centerProperty"
-                markers="markersProperty"
-                zoom="zoomProperty" 
-		        mark-click="false"
-		        draggable="true"
-		        fit="false"
-		        style="height: 100%; min-height: 100%; width: 100%"></div>    
-    
-    <div style="position: absolute; top: 0px; right: 10px; background-color:#fff;">
-            <ul class="unstyled ul-striped">
-                <li ng-repeat="estate in estates">
-                    <address>
-                    <strong>{{estate.Address}}</strong><br />
-                    {{estate.Zip}} {{estate.City}}
-                    </address>
-                </li>
-            </ul>
-        </div>
+﻿<section class="fixed-row scroll-y estates" ng-controller="EstatesCtrl">
+
+    <div class="google-map"
+        center="centerProperty"
+        markers="markersProperty"
+        zoom="zoomProperty"
+        mark-click="false"
+        draggable="true"
+        fit="false"
+        style="height: 100%; min-height: 100%; width: 100%">
+    </div>
+
+    <div style="position: absolute; top: 0px; right: 10px; background-color: #fff;">
+        <accordion>
+            <accordion-group heading="Estates">
+                <form class="form-inline">
+                    <div class="input-append"><input type="text" /> <button type="submit" class="btn"><i class="icon-search"></i></button></div>
+                </form>
+                <ul class="unstyled ul-striped">
+                    <li ng-repeat="estate in estates" ng-click="openDetail(estate)">
+                        <address>
+                        <strong>{{estate.Address}} ({{estate.Id}})</strong><br />
+                        {{estate.Zip}} {{estate.City}}
+                        </address>
+                    </li>
+                </ul>
+                <div class="btn-toolbar">
+                    <div class="btn-group">
+                        <a ng-click="openCreate()" class="btn" style="width: 105px;"><i class="icon-plus"></i></a>
+                        <a class="btn" style="width: 105px"><i class="icon-double-angle-down"></i></a>
+                    </div>
+                </div>
+                
+            </accordion-group>
+            <accordion-group heading="Owners">
+            </accordion-group>
+        </accordion>
+    </div>
 </section>
+

@@ -116,6 +116,7 @@
     <Content Include="content\font\fontawesome-webfont.svg" />
     <Content Include="content\images\glyphicons-halflings-white.png" />
     <Content Include="content\images\glyphicons-halflings.png" />
+    <Content Include="partials\estate-create.html" />
     <Content Include="partials\estates.html" />
     <Content Include="scripts\angular-cookies.js" />
     <Content Include="scripts\angular-cookies.min.js" />
@@ -429,11 +430,14 @@
     <Content Include="scripts\i18n\angular-locale_zu.js" />
     <Content Include="scripts\jquery-2.0.2.js" />
     <Content Include="scripts\jquery-2.0.2.min.js" />
+    <Content Include="scripts\ui-bootstrap-tpls-0.3.0.js" />
+    <Content Include="scripts\ui-bootstrap-tpls-0.3.0.min.js" />
     <Content Include="Web.config" />
     <Content Include="scripts\jquery-2.0.2.min.map" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Bootstrapper.cs" />
+    <Compile Include="models\Owner.cs" />
     <Compile Include="modules\EstateModule.cs" />
     <Compile Include="modules\HomeModule.cs" />
     <Compile Include="modules\InitModule.cs" />
