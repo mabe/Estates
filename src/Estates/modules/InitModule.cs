@@ -14,7 +14,7 @@ namespace Estates.modules
         {
             Get["/init"] = _ =>
             {
-                session.Store(new Estate() { Address = "Ringvägen 101", City = "Varberg", Zip = "43243", Lat = 57.10130m, Long = 12.25567m });
+                session.Store(new Estate() { Address = "Ringvägen 101", City = "Varberg", Zip = "43243", Lat = 57.10130d, Long = 12.25567d });
 
                 return "Ok";
             };

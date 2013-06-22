@@ -29,7 +29,7 @@ namespace Estates
             var store = new EmbeddableDocumentStore() { ConnectionStringName = "RavenDB" };
             store.Initialize();
 
-            IndexCreation.CreateIndexes(Assembly.GetCallingAssembly(), store);
+            IndexCreation.CreateIndexes(Assembly.GetExecutingAssembly(), store);
 
             container.Configure(x => { 
                 x.For<IDocumentStore>().Singleton().Use(store);

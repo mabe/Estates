@@ -2,41 +2,102 @@
     height: 100%;
 }
 
-body { margin: 0 }
-.fixed-row, .fixed-col { overflow: hidden; position: absolute; }
-.fixed-row { left: 0; right: 0; }
-.fixed-col { top: 0; bottom: 0; }
-.scroll-x { overflow-x: auto; }
-.scroll-y { overflow-y: auto; }
-
-header.fixed-row { height: 75px; top: 0; }
-section.fixed-row { top: 75px; bottom: 50px; }
-footer.fixed-row { height: 50px; bottom: 0; }
-
-.estates ul {
-    width: 250px;
-    
+body {
+    margin: 0;
 }
 
-    .estates ul li {
+.fixed-row, .fixed-col {
+    overflow: hidden;
+    position: absolute;
+}
+
+.fixed-row {
+    left: 0;
+    right: 0;
+}
+
+.fixed-col {
+    top: 0;
+    bottom: 0;
+}
+
+.scroll-x {
+    overflow-x: auto;
+}
+
+.scroll-y {
+    overflow-y: auto;
+}
+
+header.fixed-row {
+    height: 75px;
+    top: 0;
+}
+
+section.fixed-row {
+    top: 75px;
+    bottom: 50px;
+}
+
+footer.fixed-row {
+    height: 50px;
+    bottom: 0;
+}
+
+.estates-list {
+    position: absolute;
+    top: 0px;
+    right: 10px;
+    background-color: rgba(0, 0, 0, 0.2);
+    width: 500px;
+}
+
+    .estates-list form {
+        margin-bottom: 10px;
+    }
+
+    .estates-list form input[type=text] {
+        width: 424px;
+    }
+
+    .estates-list ul li {
         padding: 10px;
         cursor: pointer;
+        background: #F0F0F0;
+        margin-bottom: 10px;
+        border: 1px solid #000;
+        border-radius: 2px;
+        box-shadow: 1px 1px 1px #000;
     }
+
+    .estates-list .btn-group .btn {
+        width: 214px;
+    }
+
+
+
+/*.ul-striped > li:nth-child(even) {
+    background-color: #fff;
+}
 
 .ul-striped > li:nth-child(odd) {
     background-color: #f9f9f9;
-}
+}*/
 
 .accordion {
     margin-bottom: 0px;
 }
 
     .accordion form {
-        margin: 0px;
     }
 
+.accordion-heading {
+    background-color: #fff;
+}
+
 .accordion-inner {
-    padding: 0px;
+    padding: 10px 10px 1px;
+    overflow: hidden;
 }
 
     .accordion-inner ul {

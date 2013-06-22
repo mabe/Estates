@@ -13,7 +13,7 @@ namespace Estates.models
         public string Zip { get; set; }
         public string City { get; set; }
 
-        public decimal Lat { get; set; }
-        public decimal Long { get; set; }
+        public double Lat { get; set; }
+        public double Long { get; set; }
     }
 }
