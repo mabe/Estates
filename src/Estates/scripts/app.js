@@ -19,17 +19,32 @@
         };
     });
 
-    app.controller('EstatesCtrl', function EstatesCtrl($scope, $http, $dialog, geolocation) {
+    app.controller('EstatesCtrl', function EstatesCtrl($scope, $http, $dialog, geolocation, angulargmUtils) {
         $scope.mapOptions = {
             center: null,
-            zoom: 15,
+            zoom: null,
+            bounds: null
         };
+
+        $scope.$watch('mapOptions.center', function (newValue, oldValue) {
+            if (angulargmUtils.latLngEqual(newValue, oldValue)) {
+                return;
+            }
+
+            if (newValue === null) {
+                return;
+            }
+
+            var center = $scope.mapOptions.center, ne = $scope.mapOptions.bounds.getNorthEast(), dis = google.maps.geometry.spherical.computeDistanceBetween(center, ne);
+
+            $http.get('/estates/?latitude=' + center.jb + '&longitude=' + center.kb + '&radius=' + dis).success(function (model) {
+                $scope.estates = model.Estates;
+            });
+        });
 
         geolocation.currentPosition(function (coords) {
             $scope.mapOptions.center = new google.maps.LatLng(coords.latitude, coords.longitude);
-            $http.get('/estates/?latitude=' + coords.latitude + '&longitude=' + coords.longitude).success(function (model) {
-                $scope.estates = model.Estates;
-            });
+            $scope.mapOptions.bounds = new google.maps.Circle({ radius: 1000, center: $scope.mapOptions.center }).getBounds();
         });
 
         $scope.openCreate = function () {
@@ -37,11 +52,15 @@
         };
 
         $scope.openDetail = function (estate) {
-            $dialog.dialog({ templateUrl: '/partials/estate-detail.html', controller: 'EstateDetailCtrl', resolve: { item: function () { return angular.copy(estate); } } }).open();
+            $dialog.dialog({ templateUrl: '/partials/estate-detail.html', controller: 'EstateDetailCtrl', resolve: { item: function () { return estate } } }).open();
         };
 
-        $scope.$on('ADDED_ESTATE', function (e, arg) {
-            $scope.estates.push(arg);
+        $scope.$on('ADDED_ESTATE', function (e, estate) {
+            $scope.estates.push(estate);
+        });
+
+        $scope.$on('EDITED_ESTATE', function (e, estate) {
+            $scope.$broadcast('gmMarkersRedraw', 'estates');
         });
     });
 
@@ -76,16 +95,18 @@
         $scope.estate = item;
 
         $scope.openEdit = function () {
-            $dialog.dialog({ templateUrl: '/partials/estate-edit.html', controller: 'EstateEditCtrl', resolve: { item: function () { return angular.copy(item); } } }).open();
+            $dialog.dialog({ templateUrl: '/partials/estate-edit.html', controller: 'EstateEditCtrl', resolve: { item: function () { return item } } }).open();
             dialog.close();
         };
     });
 
-    app.controller('EstateEditCtrl', function EstateEditCtrl($scope, $http, item, dialog) {
+    app.controller('EstateEditCtrl', function EstateEditCtrl($scope, $rootScope, $http, item, dialog) {
         $scope.estate = item;
 
         $scope.editEstate = function () {
-            $http.put('/' + item.Id, $scope.estate).success(function () {
+            $http.put('/' + item.Id, $scope.estate).success(function (estate) {
+                $rootScope.$broadcast('EDITED_ESTATE', item);
+
                 dialog.close();
             });
         };

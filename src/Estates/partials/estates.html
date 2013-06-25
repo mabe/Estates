@@ -1,11 +1,8 @@
 ﻿<section class="fixed-row scroll-y estates" ng-controller="EstatesCtrl">
-
-    <!--gm-get-marker-options="getVolcanoOpts(object)"
-        gm-on-click="selectVolcano(object, marker)"-->
-
-    <gm-map gm-map-id="'estates-map'" gm-center="mapOptions.center" gm-zoom="mapOptions.zoom" gm-map-options="mapOptions" class="map">
+    <gm-map gm-map-id="'estates-map'" gm-center="mapOptions.center" gm-zoom="mapOptions.zoom" gm-bounds="mapOptions.bounds" gm-map-options="mapOptions" class="map">
         <gm-markers gm-objects="estates"
-                    gm-get-lat-lng="{ lat: object.Lat, lng: object.Long }">
+                    gm-get-lat-lng="{ lat: object.Lat, lng: object.Long, windowInfo: object }"
+                    gm-on-click="openDetail(object)">
         </gm-markers>
     </gm-map>
 

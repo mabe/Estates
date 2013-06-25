@@ -18,7 +18,7 @@ namespace Estates.modules
         public EstateModule(IDocumentSession session) : base("estates")
         {
             Get["/"] = _ => new EstatesModel() {
-                Estates = session.QueryEstatesInProximity(latitude: Parse.AsDouble((object)Request.Query.Latitude), longitude: Parse.AsDouble((object)Request.Query.Longitude), radius: 1d).ToList() 
+                Estates = session.QueryEstatesInProximity(latitude: Parse.AsDouble((object)Request.Query.Latitude), longitude: Parse.AsDouble((object)Request.Query.Longitude), radius: (Parse.AsDouble((object)Request.Query.Radius) / 1000d)).ToList() 
             };
             Post["/"] = _ => {
                 var estate = this.Bind<Estate>("Id"); 
