@@ -3,7 +3,7 @@
 (function () {
     "use strict";
 
-    var app = angular.module('estates-app', ['google-maps', 'ui.bootstrap']).config(['$routeProvider', function ($routeProvider) {
+    var app = angular.module('estates-app', ['ui.bootstrap', 'AngularGM']).config(['$routeProvider', function ($routeProvider) {
         $routeProvider
             .when('/estates', { templateUrl: 'partials/estates.html', controller: 'EstatesCtrl' })
             .otherwise({ redirectTo: '/estates' });
@@ -20,14 +20,15 @@
     });
 
     app.controller('EstatesCtrl', function EstatesCtrl($scope, $http, $dialog, geolocation) {
-        $scope.zoomProperty = 14;
-        $scope.centerProperty = new Coordinate(0.0, 0.0);
+        $scope.mapOptions = {
+            center: null,
+            zoom: 15,
+        };
 
         geolocation.currentPosition(function (coords) {
-            $scope.centerProperty = coords;
+            $scope.mapOptions.center = new google.maps.LatLng(coords.latitude, coords.longitude);
             $http.get('/estates/?latitude=' + coords.latitude + '&longitude=' + coords.longitude).success(function (model) {
                 $scope.estates = model.Estates;
-                $scope.markersProperty = model.Estates.map(function (estate) { return new Coordinate(estate.Lat, estate.Long); });
             });
         });
 
@@ -41,7 +42,6 @@
 
         $scope.$on('ADDED_ESTATE', function (e, arg) {
             $scope.estates.push(arg);
-            $scope.markersProperty.push(new Coordinate(arg.Lat, arg.Long));
         });
     });
 

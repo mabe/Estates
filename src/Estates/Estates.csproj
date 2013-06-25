@@ -122,7 +122,7 @@
     <Content Include="partials\estates.html" />
     <Content Include="scripts\angular-cookies.js" />
     <Content Include="scripts\angular-cookies.min.js" />
-    <Content Include="scripts\angular-google-maps.js" />
+    <Content Include="scripts\angular-gm.js" />
     <Content Include="scripts\angular-loader.js" />
     <Content Include="scripts\angular-loader.min.js" />
     <Content Include="scripts\angular-mobile.js" />
@@ -434,7 +434,6 @@
     <Content Include="scripts\jquery-2.0.2.min.js" />
     <Content Include="scripts\ui-bootstrap-tpls-0.3.0.js" />
     <Content Include="scripts\ui-bootstrap-tpls-0.3.0.min.js" />
-    <Content Include="scripts\ui-map.js" />
     <Content Include="Web.config" />
     <Content Include="scripts\jquery-2.0.2.min.map" />
   </ItemGroup>
